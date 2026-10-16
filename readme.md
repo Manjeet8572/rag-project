@@ -98,14 +98,21 @@ Invoke-RestMethod -Uri "http://127.0.0.1:8000/query" -Method Post -ContentType "
 ```
 
 The response includes an answer, source document names, and the retry count.
+### POST `/ingest`
 
-### `POST /ingest`
+Upload one Markdown (`.md`) or text (`.txt`) file. The API saves it in the `data/` folder, splits it into chunks, creates Gemini embeddings, and indexes those chunks in ChromaDB.
 
-Index the Markdown documents currently stored in the `data/` folder.
+- Content type: `multipart/form-data`
+- Form field: `file`
+- Swagger test: open `/docs`, select `POST /ingest`, click **Try it out**, choose a `.md` or `.txt` file, then click **Execute**.
 
-```powershell
-Invoke-RestMethod -Uri "http://127.0.0.1:8000/ingest" -Method Post
-```
+Example success response:
+
+```json
+{
+  "message": "Document ingested successfully",
+  "file": "upload_check.md"
+}
 
 ### `GET /documents`
 

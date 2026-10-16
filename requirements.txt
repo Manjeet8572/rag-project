@@ -9,3 +9,4 @@ python-dotenv>=1.0.0
 pypdf>=5.0.0
 sentence-transformers>=3.0.0
 langchain-google-genai>=2.0.0
+python-multipart
